@@ -11,10 +11,24 @@ class BaseModel:
     Representing a class
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         Initializing the BaseModel class
+        args:
+            *args: list of arguments or
+            length of arguments
+            **kwargs: key-value arguments
         """
+
+        if kwargs is not None:
+            for key in kwargs:
+                if key == "created_at":
+                    self.__dict__["created_at"] = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                elif key == "updated_at":
+                    self.__dict__["created_at"] = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                else:
+                    self.__dict__[key] = kwargs[key]
+
 
         self.id = str(uuid4())
         self.created_at = datetime.now()
