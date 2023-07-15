@@ -21,7 +21,9 @@ class BaseModel:
 
     def __str__(self):
         """ print human readable output """
-        return "[{}] {} {}".format(type(self).__name__, self.id, type(self).__dict__)
+        return "[{}] {} {}".format(type(self).__name__,
+                                   self.id,
+                                   type(self).__dict__)
 
     def save(self):
         """ save updates of class instance attributes """
