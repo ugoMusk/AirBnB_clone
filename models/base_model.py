@@ -16,7 +16,7 @@ class BaseModel:
         Initializing the BaseModel class
         """
 
-        self.id = str(uuid4())
+        self.class_id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
@@ -25,15 +25,15 @@ class BaseModel:
         str representation
         """
 
-        return f"{[self.__class__.__name__]} {(self.id)} {self.__dict__}"
+        return f"{[self.__class__.__name__]} {(self.class_id)} {self.__dict__}"
 
     def save(self):
         """
         a method that updates the public instance
-        attribute updated_at with current datetime
+        attribute created_at and updated_at with current datetime
         """
-
-        updated_at = datetime.now()
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
 
     def to_dict(self):
         """
@@ -43,14 +43,14 @@ class BaseModel:
         string object in ISO format
         """
 
-        to_dictFormat = {}
+        to_dictformat = {}
         # Adding a class key to identify class name
         # of the instance attribute
 
-        to_dictFormat["__class__"] = self.__class__.__name__
+        to_dictformat["__class__"] = self.__class__.__name__
         for key, val in self.__dict__.items():
             if isinstance(val, datetime):
-                to_dictFormat[key] = val.isoformat()
+                to_dictformat[key] = val.isoformat()
             else:
-                to_dictFormat[key] = val
-        return to_dictFormat
+                to_dictformat[key] = val
+        return to_dictformat
