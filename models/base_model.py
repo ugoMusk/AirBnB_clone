@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""
+A module that defines a class called BaseModel
+"""
 
-#import models
+
 import uuid
 from datetime import datetime
 
@@ -30,12 +33,11 @@ class BaseModel:
 
         self.created_at = self.created_at.isoformat()
         self.updated_at = self.updated_at.isoformat()
-        return{
-            "__class__" : getattr(self, "__class__"),
-            "id" : getattr(self, "id"),
-            "created_at" : getattr(self, "created_at"),
-            "updated_at" : getattr(self, "updated_at")}
+        return {"__class__": getattr(self, "__class__"),
+                "id": getattr(self, "id"), "created_at":
+                getattr(self, "created_at"), "updated_at":
+                getattr(self, "updated_at")}
 
 
 i_obj = BaseModel()
-print(i_obj.to_dict())
+print(i_obj)
