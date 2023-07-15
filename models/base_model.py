@@ -16,7 +16,7 @@ class BaseModel:
         Initializing the BaseModel class
         """
 
-        self.class_id = str(uuid4())
+        self.id = str(uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
@@ -25,14 +25,13 @@ class BaseModel:
         str representation
         """
 
-        return f"{[self.__class__.__name__]} {(self.class_id)} {self.__dict__}"
+        return f"{[self.__class__.__name__]} {(self.id)} {self.__dict__}"
 
     def save(self):
         """
         a method that updates the public instance
-        attribute created_at and updated_at with current datetime
+        attribute updated_at with current datetime
         """
-        self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
     def to_dict(self):
