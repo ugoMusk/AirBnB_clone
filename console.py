@@ -46,7 +46,8 @@ class HBNBCommand(cmd.Cmd):
             elif len(words) < 2:
                 print("** instance id missing **")
             else:
-                key = f'{words[0]}, {words[1]}'
+                #key = "{} {}".format(words[0], words[1])
+                key = f'{words[0]}.{words[1]}'
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
