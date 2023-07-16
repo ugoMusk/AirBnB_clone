@@ -3,7 +3,7 @@
 A module for the cmd console
 """
 import cmd
-from models.base_model import BaseModel
+from models.base_model import BaseModel, storage
 
 
 class HBNBCommand(cmd.Cmd):
@@ -28,10 +28,10 @@ class HBNBCommand(cmd.Cmd):
         """ Creates a new instance of BaseModel"""
         if line == "" or line is None:
             print("** class name missing **")
-        elif line not in storage.classes():
+        elif line not in storage.class_imports():
             print("** class doesn't exist **")
         else:
-            b = stoarage.classes()[line]()
+            b = storage.class_imports()[line]()
             b.save()
             print(b.id)
 
@@ -41,12 +41,12 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             words = line.split(" ")
-            if words[0] not in storage.classes():
+            if words[0] not in storage.class_imports():
                 print("** class doesn't exist **")
             elif len(words) < 2:
                 print("** instance id missing **")
             else:
-                key = "{}.{}".format(words[0], words[1])
+                key = f'{words[0]}, {words[1]}'
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
@@ -54,7 +54,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """ Deletes an instance based on the name and the id"""
-
+        
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
