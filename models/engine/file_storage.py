@@ -3,7 +3,6 @@
 File storage module
 """
 import json
-from models.base_model import BaseModel
 import os
 
 
@@ -46,5 +45,16 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r", encoding="utf8") as file:
                 obj_d = json.load(file)
+                obj_d = {k: self.classes()[v["__class__"]](**v) for k, v in obj_d.items()}
+                FileStorage.__objects = obj_d
         except FileNotFoundError:
             pass
+
+    def classes(self):
+        """Returns a dictionary of valid classes and their references"""
+
+        from models.base_model import BaseModel
+
+        classes = {"BaseModel": BaseModel}
+
+        return classes
