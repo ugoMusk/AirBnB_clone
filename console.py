@@ -99,8 +99,8 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             elif len(cmd_args) < 2:
                 print("** instance id missing **")
-            elif not isinstance(cmd_args[1], storage.all()[key])
-            print("** no instance found  **")
+            elif not isinstance(cmd_args[1], storage.all()[key]):
+                print("** no instance found  **")
         
                 
 
