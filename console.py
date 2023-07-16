@@ -47,7 +47,6 @@ class HBNBCommand(cmd.Cmd):
             elif len(cmd_args) < 2:
                 print("** instance id missing **")
             else:
-                #key = "{} {}".format(words[0], words[1])
                 key = f'{cmd_args[0]}.{cmd_args[1]}'
                 if key not in storage.all():
                     print("** no instance found **")
@@ -77,19 +76,21 @@ class HBNBCommand(cmd.Cmd):
         prints all string representation of class instances
         """
         if line != "":
-             cmd_args = line.split(" ")
-             if cmd_args[0] not in (storage.class_imports()):
-                 print("** class doesn't exist **")
-             else:
-                 list_instances = []
-                 list_instances.append(storage.all())
-                 print (list_instances)
+            cmd_args = line.split(" ")
+            if cmd_args[0] not in (storage.class_imports()):
+                print("** class doesn't exist **")
+            else:
+                list_instances = []
+                list_instances.append(storage.all())
+                print(list_instances)
         else:
             print("** args missing **")
 
     def do_update(self, line):
         """
-        updates an instances based on class name and id by adding of removing attributes and saves to file
+        updates an instance based on class name
+        and id by adding of removing attributes and
+        saves to file
         """
         if line == "" or line is None:
             print("** class name missing **")
@@ -101,8 +102,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             elif not isinstance(cmd_args[1], storage.all()[key]):
                 print("** no instance found  **")
-        
-                
+
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
