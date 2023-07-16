@@ -96,12 +96,22 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             cmd_args = line.split(" ")
-            if cmd_args[0] not in storage.class_imports():
-                print("** class doesn't exist **")
-            elif len(cmd_args) < 2:
-                print("** instance id missing **")
-            elif not isinstance(cmd_args[1], storage.all()[key]):
-                print("** no instance found  **")
+            if len(cmd_args) <= 3:
+
+                if cmd_args[0] not in storage.class_imports():
+                    print("** class doesn't exist **")
+                elif len(cmd_args) < 2:
+                    print("** instance id missing **")
+                elif not isinstance(cmd_args[1], storage.all()[key]):
+                    print("** no instance found  **")
+                elif len(cmd_args) < 3:
+                    print("** attribute name missing **")
+                elif not isinstance(cmd_args[2], storage.all()[key]):
+                    print("** value missing **")
+                else:
+                    pass
+            else:
+                pass
 
 
 if __name__ == "__main__":
