@@ -6,29 +6,20 @@ import cmd
 
 
 class HBNBCommand(cmd.Cmd):
-    """
-    Representing the class
-    """
+    """ Representing the class """
 
     prompt = "(hbnb) "
 
-    def do_quit(self):
-        """
-        Exists the program
-        """
+    def do_quit(self, arg):
+        """ Exists the program """
 
         return True
     def do_EOF(self, arg):
-        """
-        Exit the program
-        """
+        """ Exit the program """
         return True
 
     def emptyline(self):
-        """
-        does not execute anything
-        """
-
+        """ does not execute anything """
         pass
 
 
