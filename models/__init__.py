@@ -2,7 +2,10 @@
 """
 File storage instance module
 """
-from models.engine.file_stoarage import FileStorage
+
+from models.base_model import BaseModel
+from ..engine.file_storage import FileStorage
+import sys
 
 storage = FileStorage()
 storage.reload()
