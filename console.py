@@ -4,6 +4,7 @@ A module for the cmd console
 """
 import cmd
 from models.base_model import BaseModel, storage
+import re
 
 
 class HBNBCommand(cmd.Cmd):
@@ -85,7 +86,22 @@ class HBNBCommand(cmd.Cmd):
                  print (list_instances)
         else:
             print("** args missing **")
-    
+
+    def do_update(self, line):
+        """
+        updates an instances based on class name and id by adding of removing attributes and saves to file
+        """
+        if line == "" or line is None:
+            print("** class name missing **")
+        else:
+            cmd_args = line.split(" ")
+            if cmd_args[0] not in storage.class_imports():
+                print("** class doesn't exist **")
+            elif len(cmd_args) < 2:
+                print("** instance id missing **")
+            elif not isinstance(cmd_args[1], storage.all()[key])
+            print("** no instance found  **")
+        
                 
 
 if __name__ == "__main__":
