@@ -5,6 +5,7 @@ A module for the cmd console
 import cmd
 from models.base_model import BaseModel
 
+
 class HBNBCommand(cmd.Cmd):
     """ Representing the class """
 
@@ -14,6 +15,7 @@ class HBNBCommand(cmd.Cmd):
         """ Exists the program """
 
         return True
+
     def do_EOF(self, args):
         """ Exit the program """
         return True
@@ -21,6 +23,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """ does not execute anything """
         pass
+
     def do_create(self, line):
         """ Creates a new instance of BaseModel"""
         if line == "" or line is None:
@@ -51,7 +54,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """ Deletes an instance based on the name and the id"""
-
 
 
 if __name__ == "__main__":
