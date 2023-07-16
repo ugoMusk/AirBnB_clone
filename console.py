@@ -12,19 +12,16 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def do_EOF(self):
-        """
-        Handles end of file character
-        """
-
-        print()
-        return True
-
     def do_quit(self):
         """
         Exists the program
         """
 
+        return True
+    def do_EOF(self, arg):
+        """
+        Exit the program
+        """
         return True
 
     def emptyline(self):
@@ -35,5 +32,5 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     HBNBCommand().cmdloop()
