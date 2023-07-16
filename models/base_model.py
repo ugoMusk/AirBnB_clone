@@ -21,7 +21,7 @@ class BaseModel:
             **kwargs: key-value arguments
         """
 
-        if kwargs is not None:
+        if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key == "created_at":
                     self.__dict__["created_at"] = datetime.strptime(
@@ -32,10 +32,11 @@ class BaseModel:
                 else:
                     self.__dict__[key] = kwargs[key]
 
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-        self.storage.new(self)
+        else:
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            self.storage.new(self)
 
     def __str__(self):
         """
@@ -50,7 +51,7 @@ class BaseModel:
         attribute updated_at with current datetime
         """
         self.updated_at = datetime.now()
-        self.storage.save()
+        storage.save()
 
     def to_dict(self):
         """

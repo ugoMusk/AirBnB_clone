@@ -4,6 +4,7 @@ File storage module
 """
 import json
 from models.base_model import BaseModel
+import os
 
 
 class FileStorage:
@@ -23,9 +24,10 @@ class FileStorage:
         """
         creates new object of class
         """
-        if obj:
-            key = f'{type(obj).__name__}, {obj.id}'
-            FileStorage.__objects[key] = obj
+        
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        # key = f'{type(obj).__name__}, {obj.id}'
+        FileStorage.__objects[key] = obj
 
     def save(self):
         """
@@ -39,6 +41,8 @@ class FileStorage:
         """
         load json string from file to python object
         """
+        if not os.path.isfile(FileStorage.__file_path):
+            return
         try:
             with open(FileStorage.__file_path, "r", encoding="utf8") as file:
                 obj_d = json.load(file)

@@ -2,6 +2,38 @@
 """
 A module for the cmd console
 """
+import cmd
 
 
-print("Hello World!")
+class HBNBCommand(cmd.Cmd):
+    """
+    Representing the class
+    """
+
+    prompt = "(hbnb) "
+
+    def do_EOF(self):
+        """
+        Handles end of file character
+        """
+
+        print()
+        return True
+
+    def do_quit(self):
+        """
+        Exists the program
+        """
+
+        return True
+
+    def emptyline(self):
+        """
+        does not execute anything
+        """
+
+        pass
+
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
