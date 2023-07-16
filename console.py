@@ -34,7 +34,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, line):
         """ Prints string representation of an instance """
-        if line = "" or line is None:
+        if line == "" or line is None:
             print("** class name missing **")
         else:
             words = line.split(" ")
