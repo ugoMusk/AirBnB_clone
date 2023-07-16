@@ -55,8 +55,14 @@ class FileStorage:
 
         from models.base_model import BaseModel
         from models.user import User
+        from models.user import State
+        from models.user import City
+        from models.user import Amenity
 
         classes = {"BaseModel": BaseModel,
-                   "User": User}
+                   "User": User,
+                   "State": State,
+                   "City": City,
+                   "Amenity": Amenity}
 
         return classes
