@@ -11,12 +11,12 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb) "
 
-    def do_quit(self, args):
+    def do_quit(self, line):
         """ Exists the program """
 
         return True
 
-    def do_EOF(self, args):
+    def do_EOF(self, line):
         """ Exit the program """
         return True
 
@@ -40,14 +40,14 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         else:
-            words = line.split(" ")
-            if words[0] not in storage.class_imports():
+            cmd_args = line.split(" ")
+            if cmd_args[0] not in storage.class_imports():
                 print("** class doesn't exist **")
-            elif len(words) < 2:
+            elif len(cmd_args) < 2:
                 print("** instance id missing **")
             else:
                 #key = "{} {}".format(words[0], words[1])
-                key = f'{words[0]}.{words[1]}'
+                key = f'{cmd_args[0]}.{cmd_args[1]}'
                 if key not in storage.all():
                     print("** no instance found **")
                 else:
@@ -55,7 +55,38 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         """ Deletes an instance based on the name and the id"""
-        
+        if line == "" or line is None:
+            print("** class name missing **")
+        else:
+            cmd_args = line.split(" ")
+            if cmd_args[0] not in storage.class_imports():
+                print("** class doesn't exist **")
+            elif len(cmd_args) < 2:
+                print("** instance id missing **")
+            else:
+                key = f'{cmd_args[0]}.{cmd_args[0]}'
+                if key is not storage.all():
+                    print("** no instance found **")
+                else:
+                    del storage.all()[key]
+                    storage.save()
+
+    def do_all(self, line):
+        """
+        prints all string representation of class instances
+        """
+        if line != "":
+             cmd_args = line.split(" ")
+             if cmd_args[0] not in (storage.class_imports()):
+                 print("** class doesn't exist **")
+             else:
+                 list_instances = []
+                 list_instances.append(storage.all())
+                 print (list_instances)
+        else:
+            print("** args missing **")
+    
+                
 
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
