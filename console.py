@@ -26,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
         if line == "" or line is None:
             print("** class name missing **")
         elif line not in storage.classes():
-            print"(** class doesn't exist **")
+            print("** class doesn't exist **")
         else:
             b = stoarage.classes()[line]()
             b.save()
