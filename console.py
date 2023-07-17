@@ -112,7 +112,12 @@ class HBNBCommand(cmd.Cmd):
                     pass
             else:
                 pass
+        key = {key: value for key, value in storage.__objects}
+        if cmd_args[3] == key:
+            pass
+        else:
+            storage.all()[key].save()
 
-
+        
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
