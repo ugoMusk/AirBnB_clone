@@ -71,7 +71,7 @@ class test_basemodel(unittest.TestCase):
 
     def test_kwargs_none(self):
         """ test against correct arguments type"""
-        arg= {None: None}
+        arg = {None: None}
         with self.assertRaises(TypeError):
             new = self.value(**arg)
 
