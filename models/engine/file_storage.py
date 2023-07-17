@@ -60,7 +60,6 @@ class FileStorage:
         from models.amenity import Amenity
         from models.review import Review
         from models.place import Place
-        #from tests.test_models.test_base_model import test_base_model
 
         classes = {"BaseModel": BaseModel,
                    "User": User,
