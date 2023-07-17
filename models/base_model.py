@@ -31,7 +31,7 @@ class BaseModel:
                             kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = kwargs[key]
-
+        
         else:
             self.id = str(uuid4())
             self.created_at = datetime.now()
@@ -43,7 +43,7 @@ class BaseModel:
         str representation
         """
 
-        return f"{[self.__class__.__name__]} {(self.id)} {self.__dict__}"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """
