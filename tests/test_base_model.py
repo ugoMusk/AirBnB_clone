@@ -16,7 +16,7 @@ class test_basemodel(unittest.TestCase):
         """ Constructor for test_basemodel class """
         super().__init__(*args, **kwargs)
         self.name = 'BaseModel'
-        self.value = BaseModel()
+        self.value = BaseModel
 
     def setUp(self):
         """ """
