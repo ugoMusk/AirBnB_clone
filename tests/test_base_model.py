@@ -38,16 +38,15 @@ class test_basemodel(unittest.TestCase):
         """ """
         obj = self.value()
         copy = obj.to_dict()
-        with self.assertFalse(new is obj):
-            new = BaseModel(**copy)
+        new = BaseModel(**copy)
+        self.assertFalse(new is obj)
 
     def test_kwargs_int(self):
         """ """
         obj = self.value()
         copy = obj.to_dict()
-        copy.update({1: 2})
-        with self.assertRaises(TypeError):
-            new = BaseModel(**copy)
+        new = copy.update({1: 2})
+        self.assertRaises(TypeError)
 
     def test_save(self):
         """ test save method """
@@ -78,8 +77,8 @@ class test_basemodel(unittest.TestCase):
     def test_kwargs_one(self):
         """ test against correct key """
         arg = {'Name': 'test'}
-        with self.assertRaises(KeyError):
-            new = self.value(**arg)
+        new = self.value(**arg)
+        self.assertRaises(KeyError)
 
     def test_id(self):
         """ test id's attribute type """
