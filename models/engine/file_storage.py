@@ -70,3 +70,23 @@ class FileStorage:
                    "Place": Place}
 
         return classes
+
+    def dot_cmds(self):
+        """
+        returns a list of class decorator methods
+        """
+        cmd_list = ['all', 'count',
+                    'show','destroy',
+                    'update']
+        return cmd_list
+
+    def types(self):
+        """
+        returns a dictionary object containing types of class attributes
+        """
+        attr_types ={
+             'number_rooms': int, 'number_bathrooms': int,
+             'max_guest': int, 'price_by_night': int,
+             'latitude': float, 'longitude': float
+            }
+        return attr_types
