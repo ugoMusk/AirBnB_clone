@@ -81,10 +81,14 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
             else:
                 list_instances = []
-                list_instances.append(storage.all())
+                for key, value in (storage.class_imports()).items():
+                    list_instances.append(value)
                 print(list_instances)
         else:
-            print("** args missing **")
+            list_instances = []
+            for key, value in storage.all().items():
+                list_instances.append(key)
+                print(list_instances)
 
     def do_update(self, line):
         """
@@ -118,6 +122,5 @@ class HBNBCommand(cmd.Cmd):
         else:
             storage.all()[key].save()
 
-        
 if __name__ == "__main__":
     HBNBCommand().cmdloop()
