@@ -23,7 +23,6 @@ class FileStorage:
         """
         creates new object of class
         """
-        
         #key = "{}.{}".format(type(obj).__name__, obj.id)
         key = f'{type(obj).__name__}.{obj.id}'
         FileStorage.__objects[key] = obj
